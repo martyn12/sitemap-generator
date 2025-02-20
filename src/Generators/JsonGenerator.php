@@ -8,7 +8,7 @@ class JsonGenerator implements GeneratorInterface
 {
     public function generate(array $pages, string $filePath): void
     {
-        $json = json_encode($pages, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        $json = json_encode($pages, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         if ($json === false) {
             throw new FileWriteException("JSON encoding error: " . json_last_error_msg());
         }
