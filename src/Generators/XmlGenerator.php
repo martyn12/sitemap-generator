@@ -10,6 +10,7 @@ class XmlGenerator implements GeneratorInterface
     {
         $xml = new \XMLWriter();
         $xml->openMemory();
+        $xml->setIndent(true);
         $xml->startDocument('1.0', 'UTF-8');
         $xml->startElement('urlset');
         $xml->writeAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');
