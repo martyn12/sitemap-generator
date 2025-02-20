@@ -2,10 +2,10 @@
 
 namespace SitemapGenerator;
 
-use SitemapGenerator\Formats\GeneratorInterface;
-use SitemapGenerator\Formats\XmlGenerator;
-use SitemapGenerator\Formats\JsonGenerator;
-use SitemapGenerator\Formats\CsvGenerator;
+use SitemapGenerator\Generators\GeneratorInterface;
+use SitemapGenerator\Generators\XmlGenerator;
+use SitemapGenerator\Generators\JsonGenerator;
+use SitemapGenerator\Generators\CsvGenerator;
 use SitemapGenerator\Exceptions\WrongFormatException;
 use SitemapGenerator\Exceptions\InvalidDataException;
 

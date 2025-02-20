@@ -1,6 +1,6 @@
 <?php
 
-namespace SitemapGenerator\Formats;
+namespace SitemapGenerator\Generators;
 
 use SitemapGenerator\Exceptions\FileWriteException;
 

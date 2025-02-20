@@ -1,15 +1,14 @@
 <?php
 
-namespace SitemapGenerator\Formats;
+namespace SitemapGenerator\Generators;
 
-use XMLWriter;
 use SitemapGenerator\Exceptions\FileWriteException;
 
 class XmlGenerator implements GeneratorInterface
 {
     public function generate(array $pages, string $filePath): void
     {
-        $xml = new XMLWriter();
+        $xml = new \XMLWriter();
         $xml->openMemory();
         $xml->startDocument('1.0', 'UTF-8');
         $xml->startElement('urlset');

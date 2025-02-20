@@ -1,6 +1,6 @@
 <?php
 
-namespace SitemapGenerator\Formats;
+namespace SitemapGenerator\Generators;
 
 use SitemapGenerator\Exceptions\FileWriteException;
 
@@ -9,7 +9,7 @@ class CsvGenerator implements GeneratorInterface
     public function generate(array $pages, string $filePath): void
     {
         $file = fopen($filePath, 'wb');
-        if (!$file) {
+        if ($file === false) {
             throw new FileWriteException("Unable to write CSV file: " . $filePath);
         }
 
