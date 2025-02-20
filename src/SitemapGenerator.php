@@ -7,7 +7,8 @@ use SitemapGenerator\Generators\XmlGenerator;
 use SitemapGenerator\Generators\JsonGenerator;
 use SitemapGenerator\Generators\CsvGenerator;
 use SitemapGenerator\Exceptions\WrongFormatException;
-use SitemapGenerator\Exceptions\InvalidDataException;
+use SitemapGenerator\Validator\Exception\ValidatorException;
+use SitemapGenerator\Validator\Validator;
 
 class SitemapGenerator
 {
@@ -47,9 +48,18 @@ class SitemapGenerator
     private function validatePages(array $pages): void
     {
         foreach ($pages as $page) {
-            if (empty($page['loc']) || empty($page['lastmod']) || empty($page['priority']) || empty($page['changefreq'])) {
-                throw new InvalidDataException('Required fields must be set/not empty');
+            try {
+                Validator::validate($page, 
+                [
+                    'loc' => 'required|string',
+                    'lastmod' => 'required|date',
+                    'priority' => 'required|number|max:1|min:0',
+                    'changefreq' => 'required|string'
+                ]);
+            } catch (ValidatorException $e) {
+                echo $e->getErrors();
             }
         }
     }
+
 }
